@@ -1,24 +1,19 @@
-import React from "react";
 import { Link } from 'react-router-dom';
-
-const ItemList = ({ items }) => {
-  return (
-    <div>
-      <h2>Item List</h2>
-      <ul style={{ listStyle: 'none', padding: 0 }}>
-        {items.map(item => (
-          <li key={item.id} style={{ margin: '10px 0' }}>
-            <Link 
-              to={`/items/${item.id}`} 
-              style={{ textDecoration: 'none', color: 'blue' }}
-            >
-              {item.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+import React from 'react';
+const ItemList = ({ items }) => (
+  <div>
+    <h1 data-testid="item-list-header">Item List</h1>
+    <ul>
+      {items.map(item => (
+        <li key={item.id}>
+          <Link to={`/items/${item.id}`} data-testid={`item-${item.id}`}>
+            {item.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
 export default ItemList;
+
